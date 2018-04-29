@@ -1,24 +1,18 @@
 {
   "manifest_version": 2,
-
-  "name": "Name of your chrome extension",
-  "description": "Description of your chrome extension.",
+  "name": "Borderify",
   "version": "1.0",
 
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "src/popup.html"
-  },
+  "description": "Adds a red border to all webpages matching mozilla.org.",
 
-  "permissions": [
-    "activeTab",
-    "tabs"
-  ],
+  "icons": {
+    "48": "icons/border-48.png"
+  },
 
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["src/build/main.js"]
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["build/main.js"]
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
-  "name": "extension-name",
+  "name": "qnap-downloadstation-companion",
   "version": "0.1.0",
-  "description": "Description",
-  "main": "src/js/main.js",
+  "description": "A companion extension for QNAP DownloadStation.",
+  "main": "build/main.js",
   "scripts": {
-    "build": "parcel build src/js/main.js -d src/build/ -o main.js",
-    "watch": "parcel watch src/js/main.js -d src/build/ -o main.js"
+    "build": "parcel build src/main.js -d build",
+    "watch": "parcel watch src/main.js -d build"
   },
-  "author": "Atakan Goktepe",
+  "author": "Alexandre Paixao",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
