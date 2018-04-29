@@ -14,9 +14,20 @@ const preloadedState = {
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: false,
   preloadedState
 })
+
+/*if (typeof chrome !== 'undefined') {
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      console.log(sender.tab ?
+                  "from a content script:" + sender.tab.url :
+                  "from the extension");
+      if (request.greeting == "hello")  sendResponse({farewell: "goodbye"});
+      store.dispatch({type: 'ADD_LINK', payload: {linkUrl: 'hhh'} })
+    });
+}*/
 
 const PopupApp = () => <Provider store={store}><App /></Provider>
 

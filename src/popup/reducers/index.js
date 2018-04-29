@@ -1,10 +1,10 @@
 import { createReducer } from '@acemarke/redux-starter-kit';
 
 function addLink(state, action) {
-  const { newLink } = action.payload;
+  const { linkUrl } = action.payload;
 
   // Can safely call state.push() here
-  state.push(newLink);
+  state.push(linkUrl);
 }
 
 const links = createReducer([], {
