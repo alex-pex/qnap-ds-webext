@@ -19,11 +19,11 @@ function listenForClicks() {
     function beastNameToURL(beastName) {
       switch (beastName) {
         case "Frog":
-          return browser.extension.getURL("beasts/frog.jpg");
+          return browser.extension.getURL("public/beasts/frog.jpg");
         case "Snake":
-          return browser.extension.getURL("beasts/snake.jpg");
+          return browser.extension.getURL("public/beasts/snake.jpg");
         case "Turtle":
-          return browser.extension.getURL("beasts/turtle.jpg");
+          return browser.extension.getURL("public/beasts/turtle.jpg");
       }
     }
 

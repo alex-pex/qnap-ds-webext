@@ -4,8 +4,8 @@
   "description": "A companion extension for QNAP DownloadStation.",
   "main": "build/main.js",
   "scripts": {
-    "build": "parcel build src/main.js -d build",
-    "watch": "parcel watch src/main.js -d build"
+    "build": "parcel build src/popup/index.html -d build -o popup --public-url .",
+    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url ."
   },
   "author": "Alexandre Paixao",
   "dependencies": {
