@@ -10,10 +10,12 @@
   },
   "author": "Alexandre Paixao",
   "dependencies": {
+    "@acemarke/redux-starter-kit": "^0.0.6",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "webextension-polyfill": "^0.2.1"
   },
   "devDependencies": {
