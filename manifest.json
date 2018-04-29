@@ -1,25 +1,33 @@
 {
-  "description": "Adds a browser action icon to the toolbar. Click the button to choose a beast. The active tab's body content is then replaced with a picture of the chosen beast. See https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples#beastify",
   "manifest_version": 2,
-  "name": "Beastify",
+
+  "name": "QNAP Downloader",
+  "description": "A handy companion for DownloadStation.",
   "version": "1.0",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
   "icons": {
-    "48": "icons/beasts-48.png"
+    "28": "icons/downloadstation-28.png",
+    "80": "icons/downloadstation-80.png"
   },
 
   "permissions": [
-    "activeTab"
+    "contextMenus"
   ],
 
+  "background": {
+    "scripts": [
+      "node_modules/webextension-polyfill/dist/browser-polyfill.js",
+      "background_scripts/context-menu.js"
+    ]
+  },
+
   "browser_action": {
-    "default_icon": "icons/beasts-32.png",
+    "default_icon": "icons/downloadstation-32.png",
     "theme_icons": [{
-        "light": "icons/beasts-32-light.png",
-        "dark": "icons/beasts-32.png",
+        "light": "icons/downloadstation-32-light.png",
+        "dark": "icons/downloadstation-32-dark.png",
         "size": 32
     }],
-    "default_title": "Beastify",
+    "default_title": "DownloadStation",
     "default_popup": "build/popup.html"
   },
 
