@@ -4,15 +4,18 @@
   "description": "A companion extension for QNAP DownloadStation.",
   "main": "build/main.js",
   "scripts": {
-    "build": "parcel build src/popup/index.html -d build -o popup --public-url .",
-    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url ."
+    "build": "parcel build src/popup/index.html -d build -o popup --public-url . --no-cache",
+    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url . --no-hmr",
+    "start": "parcel serve src/popup/index.html -d build -p 3000 --open"
   },
   "author": "Alexandre Paixao",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.6.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.7.1"
   }
 }
