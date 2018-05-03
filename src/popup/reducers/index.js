@@ -8,9 +8,9 @@ function addLink(state, action) {
 }
 
 const links = createReducer([], {
-  ADD_LINK: addLink
+  ADD_LINK: addLink,
 });
 
 export default {
-  links
-}
+  links,
+};
