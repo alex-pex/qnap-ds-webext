@@ -4,9 +4,13 @@
   "description": "A companion extension for QNAP DownloadStation.",
   "main": "build/main.js",
   "scripts": {
-    "build": "parcel build src/popup/index.html -d build -o popup --public-url . --no-cache",
-    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url .",
-    "start": "parcel serve src/popup/index.html -d build -p 3000 --open"
+    "build": "run-s build:*",
+    "watch": "run-p watch:*",
+    "build:background": "parcel build src/background/index.js -d build/background --target node --no-cache",
+    "watch:background": "parcel watch src/background/index.js -d build/background --target node",
+    "build:popup": "parcel build src/popup/index.html -d build/popup --public-url . --no-cache",
+    "watch:popup": "parcel watch src/popup/index.html -d build/popup --public-url .",
+    "start:popup": "parcel serve src/popup/index.html -d build -p 3000 --open"
   },
   "author": "Alexandre Paixao",
   "license": "MIT",
@@ -26,6 +30,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "npm-run-all": "^4.1.2",
     "parcel-bundler": "^1.7.1",
     "webextension-polyfill": "^0.2.1"
   }
