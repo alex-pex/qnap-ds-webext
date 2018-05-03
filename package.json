@@ -5,7 +5,7 @@
   "main": "build/main.js",
   "scripts": {
     "build": "parcel build src/popup/index.html -d build -o popup --public-url . --no-cache",
-    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url . --no-autoinstall --no-hmr",
+    "watch": "parcel watch src/popup/index.html -d build -o popup --public-url .",
     "start": "parcel serve src/popup/index.html -d build -p 3000 --open"
   },
   "author": "Alexandre Paixao",
