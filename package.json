@@ -6,11 +6,13 @@
   "scripts": {
     "build": "run-s build:*",
     "watch": "run-p watch:*",
+    "start": "run-p watch run-firefox",
+    "run-firefox": "web-ext run",
     "build:background": "parcel build src/background/index.js -d build/background --target node --no-cache",
     "watch:background": "parcel watch src/background/index.js -d build/background --target node",
     "build:popup": "parcel build src/popup/index.html -d build/popup --public-url . --no-cache",
     "watch:popup": "parcel watch src/popup/index.html -d build/popup --public-url .",
-    "start:popup": "parcel serve src/popup/index.html -d build -p 3000 --open"
+    "serve:popup": "parcel serve src/popup/index.html -d build -p 3000 --open"
   },
   "author": "Alexandre Paixao",
   "license": "MIT",
@@ -32,6 +34,7 @@
     "eslint-plugin-react": "^7.7.0",
     "npm-run-all": "^4.1.2",
     "parcel-bundler": "^1.7.1",
+    "web-ext": "^2.6.0",
     "webextension-polyfill": "^0.2.1"
   }
 }
