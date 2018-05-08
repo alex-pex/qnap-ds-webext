@@ -1,15 +1,18 @@
 {
-  "extends": "airbnb",
+  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
+  "plugins": ["compat"],
   "env": {
     "browser": true,
     "webextensions": true
   },
   "rules": {
-    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }]
+    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
+    "react/forbid-prop-types": "off",
+    "compat/compat": "error"
   },
   "overrides": [
     {
-      "files": [ "*.spec.js", "*.test.js" ],
+      "files": ["*.spec.js", "*.test.js"],
       "env": {
         "jest": true
       }

@@ -13,9 +13,7 @@ const App = ({ links }) => (
     <p className="App-intro">
       To get started, edit <code>src/App.js</code> and save to reload.
     </p>
-    <ul>
-      {links.map(url => <li key={url}>{url}</li>)}
-    </ul>
+    <ul>{links.map(url => <li key={url}>{url}</li>)}</ul>
   </div>
 );
 

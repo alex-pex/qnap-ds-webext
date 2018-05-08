@@ -7,9 +7,7 @@ import App from './components/App';
 import rootReducer from './reducers';
 
 const preloadedState = {
-  links: [
-    'https://www.google.fr',
-  ],
+  links: ['https://www.google.fr'],
 };
 
 const store = configureStore({
@@ -29,6 +27,10 @@ chrome.runtime.onMessage.addListener(
     });
 } */
 
-const PopupApp = () => <Provider store={store}><App /></Provider>;
+const PopupApp = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 ReactDOM.render(<PopupApp />, document.getElementById('root'));
