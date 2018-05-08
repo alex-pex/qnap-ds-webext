@@ -1,3 +1,5 @@
+import store from './store';
+
 browser.contextMenus.create(
   {
     id: 'download-with-downloadstation',
@@ -7,9 +9,10 @@ browser.contextMenus.create(
   () => console.debug('context menu ready!')
 );
 
-const onDownloadClick = (info, tab) => {
-  chrome.runtime.sendMessage({ greeting: 'hello', info, tab }, response => {
-    console.log(response.farewell);
+const onDownloadClick = info => {
+  store.dispatch({
+    type: 'ADD_LINK',
+    payload: info,
   });
 };
 
