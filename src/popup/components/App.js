@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 const App = ({ links }) => (
   <div className="App">

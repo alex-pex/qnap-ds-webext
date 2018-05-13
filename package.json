@@ -5,26 +5,27 @@
   "main": "build/main.js",
   "scripts": {
     "build": "run-s build:*",
-    "watch": "run-p watch:*",
-    "start": "run-p watch run-firefox",
-    "run-firefox": "web-ext run",
-    "build:background":
-      "parcel build src/background/index.js -d build/background --target node --no-cache",
-    "watch:background": "parcel watch src/background/index.js -d build/background --target node",
+    "watch": "run-p -c watch:*",
+    "build:background": "parcel build src/background/index.js -d build/background --no-cache",
+    "watch:background": "parcel watch src/background/index.js -d build/background --no-hmr",
     "build:popup": "parcel build src/popup/index.html -d build/popup --public-url . --no-cache",
-    "watch:popup": "parcel watch src/popup/index.html -d build/popup --public-url .",
-    "serve:popup": "parcel serve src/popup/index.html -d build -p 3000 --open"
+    "watch:popup": "parcel watch src/popup/index.html -d build/popup --public-url . --no-hmr"
   },
   "author": "Alexandre Paixao",
   "license": "MIT",
   "browserslist": ["defaults"],
   "dependencies": {
     "@acemarke/redux-starter-kit": "^0.0.6",
+    "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
+    "react-chrome-redux": "^1.5.1",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "remote-redux-devtools": "^0.5.12"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -42,7 +43,6 @@
     "npm-run-all": "^4.1.3",
     "parcel-bundler": "^1.8.1",
     "prettier": "^1.12.1",
-    "web-ext": "^2.6.0",
     "webextension-polyfill": "^0.2.1"
   }
 }
