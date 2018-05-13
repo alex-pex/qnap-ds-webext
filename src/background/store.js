@@ -1,15 +1,24 @@
-import { configureStore } from '@acemarke/redux-starter-kit';
-import { createBackgroundStore } from 'redux-webext';
-import rootReducer from './reducers';
+import { wrapStore } from 'react-chrome-redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import pkg from '../../package.json';
+import reducers from './reducers';
 
 const preloadedState = {
   links: ['https://www.google.fr'],
 };
 
-const store = configureStore({
-  reducer: rootReducer,
-  devTools: true,
+const middleware = [thunk, logger];
+
+const store = createStore(
+  combineReducers(reducers),
   preloadedState,
+  applyMiddleware(...middleware)
+);
+
+wrapStore(store, {
+  portName: pkg.name,
 });
 
-export default createBackgroundStore({ store });
+export default store;
