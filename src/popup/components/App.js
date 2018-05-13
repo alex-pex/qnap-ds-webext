@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import logo from './logo.svg';
+import Logo from './Logo';
 
 const App = ({ links }) => (
   <div className="App">
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      <Logo />
       <h1 className="App-title">Welcome to React</h1>
     </header>
     <p className="App-intro">
