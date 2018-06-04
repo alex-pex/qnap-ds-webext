@@ -3,13 +3,14 @@
 
   "name": "QNAP Downloader",
   "description": "A handy companion for DownloadStation.",
+  "author": "alex-pex",
   "version": "1.0",
   "icons": {
     "28": "icons/downloadstation-28.png",
     "80": "icons/downloadstation-80.png"
   },
 
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus", "<all_urls>"],
 
   "background": {
     "scripts": [
@@ -20,13 +21,6 @@
 
   "browser_action": {
     "default_icon": "icons/downloadstation-32.png",
-    "theme_icons": [
-      {
-        "light": "icons/downloadstation-32-light.png",
-        "dark": "icons/downloadstation-32-dark.png",
-        "size": 32
-      }
-    ],
     "default_title": "DownloadStation",
     "default_popup": "build/popup/index.html"
   },

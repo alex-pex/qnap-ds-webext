@@ -6,23 +6,23 @@
   "scripts": {
     "build": "run-s build:*",
     "watch": "run-p -c watch:*",
-    "build:background":
-      "parcel build src/background/index.js -d build/background --no-autoinstall --no-cache",
-    "watch:background":
-      "parcel watch src/background/index.js -d build/background --no-autoinstall --no-hmr",
-    "build:popup":
-      "parcel build src/popup/index.html -d build/popup --public-url . --no-autoinstall --no-cache",
-    "watch:popup":
-      "parcel watch src/popup/index.html -d build/popup --public-url . --no-autoinstall --no-hmr"
+    "build:background": "parcel build src/background/index.js -d build/background --no-cache",
+    "build:popup": "parcel build src/popup/index.html -d build/popup --no-cache --public-url .",
+    "watch:background": "parcel watch src/background/index.js -d build/background --no-autoinstall --no-hmr",
+    "watch:popup": "parcel watch src/popup/index.html -d build/popup --no-autoinstall --no-hmr --public-url ."
   },
   "author": "Alexandre Paixao",
   "license": "MIT",
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
     "@acemarke/redux-starter-kit": "^0.0.6",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
     "prop-types": "^15.6.1",
+    "qs": "^6.5.2",
     "react": "^16.3.2",
     "react-chrome-redux": "^1.5.1",
     "react-dom": "^16.3.2",
@@ -37,6 +37,7 @@
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^2.9.0",

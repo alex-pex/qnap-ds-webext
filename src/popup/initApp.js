@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import pkg from '../../package.json';
 import App from './components/App';
+import { getTaskList } from '../background/client';
 
 async function initApp() {
   const proxyStore = new Store({
@@ -11,6 +12,11 @@ async function initApp() {
   });
 
   await proxyStore.ready();
+  const response = await getTaskList();
+
+  response.data.data.forEach(job =>
+    proxyStore.dispatch({ type: 'ADD_LINK', payload: { linkUrl: job.source_name } })
+  );
 
   ReactDOM.render(
     <Provider store={proxyStore}>
