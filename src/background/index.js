@@ -1,4 +1,11 @@
+import 'babel-polyfill';
 import store from './store';
+import { getTaskList } from './client';
+
+setInterval(async () => {
+  const response = await getTaskList();
+  store.dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
+}, 2000);
 
 browser.contextMenus.create(
   {
@@ -11,7 +18,7 @@ browser.contextMenus.create(
 
 const onDownloadClick = info => {
   store.dispatch({
-    type: 'ADD_LINK',
+    type: 'USER_ADD_LINK',
     payload: info,
   });
 };

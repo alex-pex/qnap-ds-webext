@@ -6,9 +6,7 @@ import { composeWithDevTools } from 'remote-redux-devtools';
 import pkg from '../../package.json';
 import reducers from './reducers';
 
-const preloadedState = {
-  links: ['https://www.google.fr'],
-};
+const preloadedState = {};
 
 const middleware = [thunk, logger];
 const composeEnhancers = composeWithDevTools({ name: pkg.name });
