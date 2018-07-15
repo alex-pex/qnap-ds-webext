@@ -2,74 +2,59 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
-  Collapse,
+  Button,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Nav,
-  NavItem,
-  NavLink,
   Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Progress,
   Table,
   UncontrolledDropdown,
 } from 'reactstrap';
 
-const App = ({ tasks }) => {
-  console.log(tasks);
-  return (
-    <Fragment>
-      <Navbar color="success" dark>
-        <NavbarBrand href="/">
-          <strong>Download</strong>Station Companion
-        </NavbarBrand>
-        <NavbarToggler />
-        <Collapse navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-        </Collapse>
-      </Navbar>
-      <Table className="no-margin-bottom">
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Source/Name</th>
-            <th scope="col">Progress</th>
-            <th scope="col">#</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map((task, index) => (
+import TaskProgress from './TaskProgress';
+
+const App = ({ tasks, domain }) => (
+  <Fragment>
+    <Navbar fixed="top" color="success" dark>
+      <a
+        className="navbar-brand"
+        href={`${domain}/downloadstation/`}
+        onClick={event => {
+          event.preventDefault();
+          chrome.tabs.create({ url: `${domain}/downloadstation/` });
+        }}
+      >
+        <strong>Download</strong>Station Companion
+      </a>
+      <Button color="success" size="sm">
+        <i className="material-icons">settings</i>
+      </Button>
+    </Navbar>
+    <Table
+      className="no-margin-bottom"
+      style={{ tableLayout: 'fixed', marginBottom: 100, marginTop: 50 }}
+    >
+      <thead className="thead-light">
+        <tr>
+          <th scope="col">Source/Name</th>
+          <th scope="col" style={{ width: 61 }}>
+            #
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {tasks.length ? (
+          tasks.map((task, index) => (
             <tr key={task.hash || index}>
-              <th scope="row">
-                <input type="checkbox" />
-              </th>
-              <td>{task.source_name}</td>
-              <td>
-                <Progress value={task.progress} animated={task.activity_time > 0} />
+              <td className="text-truncate">
+                <div style={{ marginBottom: 5 }}>{task.source_name || task.source}</div>
+                <TaskProgress task={task} />
               </td>
-              <td>
+              <td style={{ verticalAlign: 'middle' }}>
                 <UncontrolledDropdown direction="left">
-                  <DropdownToggle caret>Dropdown</DropdownToggle>
+                  <DropdownToggle color="secondary">
+                    <i className="material-icons">list</i>
+                  </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
@@ -80,12 +65,18 @@ const App = ({ tasks }) => {
                 </UncontrolledDropdown>
               </td>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Fragment>
-  );
-};
+          ))
+        ) : (
+          <tr>
+            <td colSpan={3} className="text-center">
+              Aucune tâche en cours
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </Table>
+  </Fragment>
+);
 
 const TaskType = PropTypes.shape({
   source_name: PropTypes.string.isRequired,
@@ -98,6 +89,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   tasks: state.tasks.data,
+  domain: state.settings.domain,
 });
 
 export default connect(mapStateToProps)(App);

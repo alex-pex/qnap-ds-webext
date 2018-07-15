@@ -1,13 +1,22 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'material-design-icons/iconfont/material-icons.css';
 
 html {
   font-size: 14px;
 }
 
-body {
+#root {
   width: 480px;
+  max-height: 600px;
+  overflow: auto;
 }
 
 .no-margin-bottom {
   margin-bottom: 0;
+}
+
+.btn i.material-icons {
+  vertical-align: middle;
+  margin-top: -6px;
+  margin-bottom: -2px;
 }
