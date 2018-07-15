@@ -21,12 +21,27 @@ const clientConfig = {
 
 const client = axios.create(clientConfig);
 
+let sid = null;
+
 client.interceptors.request.use(async config => {
-  const response = await axios.post('/Misc/Login', { user, pass }, clientConfig);
-  const { sid } = response.data;
+  if (!sid) {
+    const response = await axios.post('/Misc/Login', { user, pass }, clientConfig);
+    sid = response.data.sid;
+    setTimeout(() => {
+      sid = null;
+    }, 300000);
+  }
+
   return { ...config, data: { ...config.data, sid } };
 });
 
+export const STATE_PAUSED = 1;
+export const STATE_STOPPED = 2;
+export const STATE_COMPLETED = 5;
+export const STATE_SEEDING = 100;
+export const STATE_DOWNLOADING = 104;
+
 export const getTaskList = () => client.post('/Task/Query');
+
 export const addTask = ({ url, temp = 'Download', move = 'Download' }) =>
   client.post('/Task/AddUrl', { url, temp, move });

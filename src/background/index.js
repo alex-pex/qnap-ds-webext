@@ -18,7 +18,7 @@ browser.contextMenus.create(
 
 const onDownloadClick = info => {
   store.dispatch({
-    type: 'USER_ADD_LINK',
+    type: 'ADD_USER_LINK',
     payload: info,
   });
 };
