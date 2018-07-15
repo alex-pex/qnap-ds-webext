@@ -1,9 +1,10 @@
 import 'babel-polyfill';
 import store from './store';
-import { getTaskList } from './client';
+import makeClient from './client';
 
 setInterval(async () => {
-  const response = await getTaskList();
+  const client = makeClient(store.getState().settings);
+  const response = await client.getTaskList();
   store.dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
 }, 2000);
 

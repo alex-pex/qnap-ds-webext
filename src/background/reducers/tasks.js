@@ -1,5 +1,4 @@
 import { createReducer } from '@acemarke/redux-starter-kit';
-import { addTask } from '../client';
 
 const initialState = {
   data: [],
@@ -26,13 +25,8 @@ function receiveTasks(state, { payload }) {
   return payload || state;
 }
 
-function addUserLink(state, { payload }) {
-  addTask({ url: payload.linkUrl, move: 'Téléchargements' });
-}
-
 const tasksReducer = createReducer(initialState, {
   RECEIVE_TASKS: receiveTasks,
-  ADD_USER_LINK: addUserLink,
 });
 
 export default tasksReducer;
